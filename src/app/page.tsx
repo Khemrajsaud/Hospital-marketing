@@ -1,10 +1,10 @@
-import Link from "next/link";
+
+
 
 export default function Home() {
   return (
-    <Link href={'/sakshyam'} className="text-black">
-      Hello
-    </Link>
-
+    <div className="bg-white min-h-screen">
+      <h1>Welcome</h1>
+    </div>
   );
 }
