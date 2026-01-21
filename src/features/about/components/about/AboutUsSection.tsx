@@ -1,5 +1,5 @@
-import AboutUsButtons from "@/src/components/AboutUsButtons";
 import React from "react";
+import AboutUsButtons from "@/src/components/AboutUsButtons";
 
 const AboutUsSection: React.FC = () => {
   return (

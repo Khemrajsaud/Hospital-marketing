@@ -1,5 +1,6 @@
 import React from "react";
 import { Heart } from "lucide-react";
+import Image from 'next/image';
 
 const WhoWeAreSection = () => {
   return (
@@ -36,11 +37,13 @@ const WhoWeAreSection = () => {
           </div>
 
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative rounded-3xl overflow-hidden p-8 max-w-lg">
-              <img
+            <div className="relative rounded-3xl overflow-hidden p-8 max-w-lg w-full aspect-[4/3]"> 
+              <Image
                 src="/doctors2.png"
                 alt="Healthcare team"
-                className="w-full h-auto object-cover rounded-2xl"
+                fill
+                className="object-cover rounded-2xl"
+                priority 
               />
 
               <div className="absolute bottom-4 left-4 bg-gradient-to-r from-[#0A5470] via-[#096686] to-[#03ABDD] text-white rounded-2xl px-6 py-4 shadow-xl flex items-start gap-3 min-w-[140px]">

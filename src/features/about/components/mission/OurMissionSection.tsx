@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const OurMissionSection = () => {
   return (
@@ -8,7 +9,7 @@ const OurMissionSection = () => {
           <div className="space-y-6">
             <div>
               <p className="text-[#0B4F6C] text-lg md:text-xl font-bold mb-4">
-                Enhancing Patient Heath Daily
+                Enhancing Patient Health Daily
               </p>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-[#0B4F6C]">Our </span>
@@ -19,49 +20,57 @@ const OurMissionSection = () => {
             <div className="space-y-5 text-gray-800 text-base md:text-lg leading-relaxed font-semibold">
               <p>
                 We believe healthcare should be accessible, compassionate, and
-                innovative. Our team of dedicated professionals words tirelessly
+                innovative. Our team of dedicated professionals works tirelessly
                 to ensure every patient receives the highest quality care
                 tailored to their individual needs.
               </p>
 
               <p>
                 Through continuous learning, advanced technology, and a
-                patient-first approach, we're not just treating conditions -
+                patient-first approach, we're not just treating conditions —
                 we're transforming lives and building healthier communities.
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
-              <img
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
+              <Image
                 src="/m1.png"
                 alt="Doctor with tablet"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw" 
               />
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
-              <img
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
+              <Image
                 src="/m2.png"
                 alt="Hospital corridor"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
-              <img
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
+              <Image
                 src="/m3.png"
                 alt="Medical equipment"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
-              <img
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-64 transition-all duration-300 hover:shadow-2xl hover:shadow-[#01BAEF]/30">
+              <Image
                 src="/m4.png"
                 alt="Medication"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>

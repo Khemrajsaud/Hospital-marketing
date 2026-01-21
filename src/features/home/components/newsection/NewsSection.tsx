@@ -1,5 +1,5 @@
-import SectionHeader from "@/src/components/shared/SectionHeader";
 import React from "react";
+import SectionHeader from "@/src/components/shared/SectionHeader";
 import NewsCard from "./NewsCard";
 
 const newsArticles = [
