@@ -18,7 +18,7 @@ const Navbar = () => {
               className="text-gray-700 hover:text-[#0A5470] transition-colors"
             >
               Home
-            </a>{" "}
+            </a>
             <a
               href="/about"
               className="text-gray-700 hover:text-[#0A5470] transition-colors"
@@ -26,7 +26,7 @@ const Navbar = () => {
               About Us
             </a>
             <a
-              href="/doctors"
+              href="/doctor"
               className="text-gray-700 hover:text-[#0A5470] transition-colors"
             >
               Doctors

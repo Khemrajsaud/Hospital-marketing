@@ -16,14 +16,7 @@ interface NewsCardProps {
 
 const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
   return (
-    <div
-      className="
-    bg-white rounded-2xl overflow-hidden shadow-lg
-    hover:shadow-lg transition-all duration-300 group p-6 relative
-    hover:shadow-[0_10px_30px_-8px_#01BAEF]
-    hover:shadow-[#01BAEF]/40
-  "
-    >
+    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-lg transition-all duration-300 group p-5 relative hover:shadow-[0_10px_30px_-8px_#01BAEF] hover:shadow-[#01BAEF]/40">
       <div className="flex items-start justify-between mb-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden border-4 border-[#01BAEF] shadow-lg flex-shrink-0">
           <Image
@@ -47,7 +40,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ article }) => {
           {article.title}
         </h3>
 
-        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+        <p className="text-gray-600 text-sm leading-relaxed font-semibold">
           {article.description}
         </p>
 

@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Image1 from "../../../../public/doctors1.png";
 
 const WhyChooseUs: React.FC = () => {
   const stats = [
@@ -36,7 +35,7 @@ const WhyChooseUs: React.FC = () => {
             <div className="rounded-3xl overflow-hidden bg-gradient-to-br from-[#0A5470] to-[#01BAEF]">
               <div className="rounded-3xl overflow-hidden">
                 <Image
-                  src={Image1}
+                  src= "/doctors1.png"
                   alt="Team of medical professionals"
                   width={600}
                   height={500}

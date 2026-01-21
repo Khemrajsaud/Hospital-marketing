@@ -1,9 +1,6 @@
 import SectionHeader from "@/src/components/shared/SectionHeader";
 import React from "react";
 import NewsCard from "./NewsCard";
-import Image1 from "../../../../../public/news1.png";
-import Image2 from "../../../../../public/news2.png";
-import Image3 from "../../../../../public/news3.png";
 
 const newsArticles = [
   {
@@ -11,7 +8,7 @@ const newsArticles = [
     category: "News",
     title: "Appreciation",
     description: "Participants received appreciation certificates, and the hospital family thanked all blood donors.",
-    image: Image1,
+    image: "/news1.png",
     link: "#",
     daysAgo: "2 days ago",
   },
@@ -20,7 +17,7 @@ const newsArticles = [
     category: "News",
     title: "Nurses Outside",
     description: "Blood Nurses outside Hospital the first group of Nepali nurses had start working for the NHS in the autumn.",
-    image: Image2,
+    image: "/news2.png",
     link: "#",
     daysAgo: "2 days ago",
   },
@@ -29,7 +26,7 @@ const newsArticles = [
     category: "News",
     title: "Blood Donors",
     description: "Blood donors received appreciation certificates and heartfelt thanks from the hospital.",
-    image: Image3,
+    image: "/news3.png",
     link: "#",
     daysAgo: "2 days ago",
   },
@@ -38,7 +35,7 @@ const newsArticles = [
     category: "News",
     title: "Blood Donors",
     description: "Blood donors received appreciation certificates and heartfelt thanks from the hospital.",
-    image: Image1,
+    image: "/news1.png",
     link: "#",
     daysAgo: "2 days ago",
   },
