@@ -1,32 +1,24 @@
 "use client";
 
-import React from 'react';
+import React from "react";
+import Link from "next/link";
 
 const AuthButtons = () => {
-  const handleLogin = () => {
-    // Login logic here
-    console.log('Login clicked');
-  };
-
-  const handleSignup = () => {
-    // Signup logic here
-    console.log('Signup clicked');
-  };
-
   return (
-    <div className="flex items-center space-x-4">
-      <button
-        onClick={handleLogin}
-        className="text-[#0A5470] hover:text-[#096686] font-semibold transition-colors"
+    <div className="flex items-center gap-4 md:gap-6">
+      <a
+        href="/login"
+        className="text-[#0A5470] hover:text-[#096686] font-bold transition-colors duration-200"
       >
         Login
-      </button>
-      <button
-        onClick={handleSignup}
-        className="bg-[#0A5470] hover:bg-[#096686] text-white font-semibold px-6 py-2 rounded-lg transition-colors"
+      </a>
+
+      <a
+        href="/signup"
+        className="bg-[#0A5470] hover:bg-[#096686] text-white font-bold px-6 py-2.5 rounded-lg transition-colors duration-200 shadow-sm hover:shadow active:scale-98"
       >
         Sign Up
-      </button>
+      </a>
     </div>
   );
 };

@@ -1,50 +1,5 @@
 import React from "react";
-import { Search } from "lucide-react";
-import { AutocompleteInput } from "./AutocompleteInput";
-
-const departments = [
-  "Dentist",
-  "Cardiology",
-  "Dermatology",
-  "Neurology",
-  "Pediatrics",
-  "Orthopedics",
-  "Oncology",
-  "Gastroenterology",
-  "Psychiatry",
-  "Ophthalmology",
-  "ENT (Ear, Nose & Throat)",
-];
-
-const locations = [
-  "Kalagaun, Karnali Provincial",
-  "Kathmandu, Bagmati Province",
-  "Pokhara, Gandaki Province",
-  "Biratnagar, Province No. 1",
-  "Bharatpur, Bagmati Province",
-  "Lalitpur, Bagmati Province",
-  "Dharan, Province No. 1",
-  "Butwal, Lumbini Province",
-];
-
-const searchOptions = [
-  "Cavaty / Tooth pain",
-  "General Checkup",
-  "Diabetes Consultation",
-  "Blood Pressure Monitoring",
-  "Heart Disease",
-  "Skin Allergy Treatment",
-  "Pediatric Care",
-  "Mental Health Counseling",
-  "Physical Therapy",
-  "X-Ray & Imaging",
-  "Blood Test",
-  "COVID-19 Testing",
-  "Vaccination",
-  "Dental Checkup",
-  "Eye Examination",
-  "Pregnancy Care",
-];
+import DoctorsSearchForm from "./DoctorsSearchForm";
 
 const MeetDoctorsSection = () => {
   return (
@@ -64,41 +19,7 @@ const MeetDoctorsSection = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl p-6 md:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
-            <div className="md:col-span-4">
-              <AutocompleteInput
-                label="Search"
-                placeholder="Condition, doctor, practice..."
-                options={searchOptions}
-              />
-            </div>
-
-            <div className="md:col-span-3">
-              <AutocompleteInput
-                label="Department"
-                placeholder="Select Department"
-                options={departments}
-              />
-            </div>
-
-            <div className="md:col-span-3">
-              <AutocompleteInput
-                label="Location"
-                placeholder="Enter location"
-                options={locations}
-                defaultValue="Kalagaun, Karnali Provincial"
-              />
-            </div>
-
-            <div className="md:col-span-2">
-              <button className="w-full bg-[#01BAEF] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0195C4] transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
-                <Search className="w-5 h-5" />
-                Find Care
-              </button>
-            </div>
-          </div>
-        </div>
+        <DoctorsSearchForm />
       </div>
     </section>
   );

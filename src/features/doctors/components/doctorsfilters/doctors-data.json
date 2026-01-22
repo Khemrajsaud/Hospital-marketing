@@ -1,0 +1,405 @@
+{
+  "departments": [
+    "Dentist",
+    "Cardiology",
+    "Dermatology",
+    "Neurology",
+    "Pediatrics",
+    "Orthopedics",
+    "Oncology",
+    "Gastroenterology",
+    "Psychiatry",
+    "Ophthalmology",
+    "ENT (Ear, Nose & Throat)"
+  ],
+  "locations": [
+    "Kalagaun, Karnali Provincial",
+    "Kathmandu, Bagmati Province",
+    "Pokhara, Gandaki Province",
+    "Biratnagar, Province No. 1",
+    "Bharatpur, Bagmati Province",
+    "Lalitpur, Bagmati Province",
+    "Dharan, Province No. 1",
+    "Butwal, Lumbini Province"
+  ],
+  "searchOptions": [
+    "Cavaty / Tooth pain",
+    "General Checkup",
+    "Diabetes Consultation",
+    "Blood Pressure Monitoring",
+    "Heart Disease",
+    "Skin Allergy Treatment",
+    "Pediatric Care",
+    "Mental Health Counseling",
+    "Physical Therapy",
+    "X-Ray & Imaging",
+    "Blood Test",
+    "COVID-19 Testing",
+    "Vaccination",
+    "Dental Checkup",
+    "Eye Examination",
+    "Pregnancy Care"
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Sakshyam Shrestha",
+      "specialty": "Dentist",
+      "experience": "10+ years of experience",
+      "location": "Kalagaun, Karnali Provincial",
+      "image": "/doc1.jpg",
+      "conditions": ["Cavaty / Tooth pain", "Dental Checkup"]
+    },
+    {
+      "id": 2,
+      "name": "Dr. Aisha Tamang",
+      "specialty": "Dentist",
+      "experience": "8+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc2.jpg",
+      "conditions": ["Cavaty / Tooth pain", "Dental Checkup"]
+    },
+    {
+      "id": 3,
+      "name": "Dr. Rajesh Sharma",
+      "specialty": "Dentist",
+      "experience": "15+ years of experience",
+      "location": "Kalagaun, Karnali Provincial",
+      "image": "/doc3.jpg",
+      "conditions": ["Cavaty / Tooth pain", "General Checkup"]
+    },
+    {
+      "id": 4,
+      "name": "Dr. Binita Gurung",
+      "specialty": "Dentist",
+      "experience": "12+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc4.jpg",
+      "conditions": ["Cavaty / Tooth pain", "Dental Checkup"]
+    },
+    {
+      "id": 5,
+      "name": "Dr. Ramesh Karki",
+      "specialty": "Cardiology",
+      "experience": "18+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc5.jpg",
+      "conditions": ["Heart Disease", "Blood Pressure Monitoring"]
+    },
+    {
+      "id": 6,
+      "name": "Dr. Sunita Rai",
+      "specialty": "Dermatology",
+      "experience": "10+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc1.jpg",
+      "conditions": ["Skin Allergy Treatment"]
+    },
+    {
+      "id": 7,
+      "name": "Dr. Kabita Thapa",
+      "specialty": "Pediatrics",
+      "experience": "14+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc2.jpg",
+      "conditions": ["Pediatric Care", "Vaccination"]
+    },
+    {
+      "id": 8,
+      "name": "Dr. Prakash Adhikari",
+      "specialty": "Dentist",
+      "experience": "9+ years of experience",
+      "location": "Biratnagar, Province No. 1",
+      "image": "/doc4.jpg",
+      "conditions": ["Cavaty / Tooth pain", "Dental Checkup"]
+    },
+    {
+      "id": 9,
+      "name": "Dr. Suman Joshi",
+      "specialty": "Cardiology",
+      "experience": "20+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc3.jpg",
+      "conditions": ["Heart Disease", "Blood Pressure Monitoring", "General Checkup"]
+    },
+    {
+      "id": 10,
+      "name": "Dr. Anjali Basnet",
+      "specialty": "Neurology",
+      "experience": "12+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc5.jpg",
+      "conditions": ["General Checkup", "Mental Health Counseling"]
+    },
+    {
+      "id": 11,
+      "name": "Dr. Bikram Pradhan",
+      "specialty": "Orthopedics",
+      "experience": "16+ years of experience",
+      "location": "Bharatpur, Bagmati Province",
+      "image": "/doc1.jpg",
+      "conditions": ["Physical Therapy", "General Checkup", "X-Ray & Imaging"]
+    },
+    {
+      "id": 12,
+      "name": "Dr. Maya Lama",
+      "specialty": "Oncology",
+      "experience": "15+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc2.jpg",
+      "conditions": ["General Checkup", "Blood Test"]
+    },
+    {
+      "id": 13,
+      "name": "Dr. Krishna Magar",
+      "specialty": "Gastroenterology",
+      "experience": "11+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc3.jpg",
+      "conditions": ["General Checkup", "Blood Test"]
+    },
+    {
+      "id": 14,
+      "name": "Dr. Sabina Rana",
+      "specialty": "Psychiatry",
+      "experience": "13+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc4.jpg",
+      "conditions": ["Mental Health Counseling"]
+    },
+    {
+      "id": 15,
+      "name": "Dr. Dipak Chaudhary",
+      "specialty": "Ophthalmology",
+      "experience": "17+ years of experience",
+      "location": "Dharan, Province No. 1",
+      "image": "/doc5.jpg",
+      "conditions": ["Eye Examination", "General Checkup"]
+    },
+    {
+      "id": 16,
+      "name": "Dr. Ritu Shrestha",
+      "specialty": "ENT (Ear, Nose & Throat)",
+      "experience": "10+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc1.jpg",
+      "conditions": ["General Checkup"]
+    },
+    {
+      "id": 17,
+      "name": "Dr. Gopal Sharma",
+      "specialty": "Dermatology",
+      "experience": "14+ years of experience",
+      "location": "Biratnagar, Province No. 1",
+      "image": "/doc2.jpg",
+      "conditions": ["Skin Allergy Treatment", "General Checkup"]
+    },
+    {
+      "id": 18,
+      "name": "Dr. Nirmala KC",
+      "specialty": "Pediatrics",
+      "experience": "11+ years of experience",
+      "location": "Butwal, Lumbini Province",
+      "image": "/doc3.jpg",
+      "conditions": ["Pediatric Care", "Vaccination", "General Checkup"]
+    },
+    {
+      "id": 19,
+      "name": "Dr. Ashok Pandey",
+      "specialty": "Cardiology",
+      "experience": "22+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc4.jpg",
+      "conditions": ["Heart Disease", "Blood Pressure Monitoring", "Diabetes Consultation"]
+    },
+    {
+      "id": 20,
+      "name": "Dr. Laxmi Ghimire",
+      "specialty": "Gynecology",
+      "experience": "16+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc5.jpg",
+      "conditions": ["Pregnancy Care", "General Checkup"]
+    },
+    {
+      "id": 21,
+      "name": "Dr. Mohan Thakur",
+      "specialty": "Neurology",
+      "experience": "19+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc1.jpg",
+      "conditions": ["General Checkup", "Mental Health Counseling"]
+    },
+    {
+      "id": 22,
+      "name": "Dr. Hari Bahadur Malla",
+      "specialty": "Orthopedics",
+      "experience": "13+ years of experience",
+      "location": "Dharan, Province No. 1",
+      "image": "/doc2.jpg",
+      "conditions": ["Physical Therapy", "X-Ray & Imaging"]
+    },
+    {
+      "id": 23,
+      "name": "Dr. Puja Karki",
+      "specialty": "Oncology",
+      "experience": "12+ years of experience",
+      "location": "Biratnagar, Province No. 1",
+      "image": "/doc3.jpg",
+      "conditions": ["General Checkup", "Blood Test", "X-Ray & Imaging"]
+    },
+    {
+      "id": 24,
+      "name": "Dr. Nabin Koirala",
+      "specialty": "Gastroenterology",
+      "experience": "15+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc4.jpg",
+      "conditions": ["General Checkup", "Blood Test", "Diabetes Consultation"]
+    },
+    {
+      "id": 25,
+      "name": "Dr. Sharmila Adhikari",
+      "specialty": "Psychiatry",
+      "experience": "10+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc5.jpg",
+      "conditions": ["Mental Health Counseling"]
+    },
+    {
+      "id": 26,
+      "name": "Dr. Bishal Limbu",
+      "specialty": "Ophthalmology",
+      "experience": "14+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc1.jpg",
+      "conditions": ["Eye Examination", "General Checkup"]
+    },
+    {
+      "id": 27,
+      "name": "Dr. Kamala Poudel",
+      "specialty": "ENT (Ear, Nose & Throat)",
+      "experience": "11+ years of experience",
+      "location": "Bharatpur, Bagmati Province",
+      "image": "/doc2.jpg",
+      "conditions": ["General Checkup"]
+    },
+    {
+      "id": 28,
+      "name": "Dr. Suresh Rana",
+      "specialty": "Dentist",
+      "experience": "7+ years of experience",
+      "location": "Butwal, Lumbini Province",
+      "image": "/doc3.jpg",
+      "conditions": ["Cavaty / Tooth pain", "Dental Checkup"]
+    },
+    {
+      "id": 29,
+      "name": "Dr. Anita Thapa",
+      "specialty": "Pediatrics",
+      "experience": "9+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc4.jpg",
+      "conditions": ["Pediatric Care", "Vaccination", "COVID-19 Testing"]
+    },
+    {
+      "id": 30,
+      "name": "Dr. Ramesh Dulal",
+      "specialty": "Dermatology",
+      "experience": "12+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc5.jpg",
+      "conditions": ["Skin Allergy Treatment", "General Checkup"]
+    },
+    {
+      "id": 31,
+      "name": "Dr. Sita Gurung",
+      "specialty": "Gynecology",
+      "experience": "18+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc1.jpg",
+      "conditions": ["Pregnancy Care", "General Checkup"]
+    },
+    {
+      "id": 32,
+      "name": "Dr. Arjun Bastola",
+      "specialty": "Cardiology",
+      "experience": "16+ years of experience",
+      "location": "Dharan, Province No. 1",
+      "image": "/doc2.jpg",
+      "conditions": ["Heart Disease", "Blood Pressure Monitoring", "General Checkup"]
+    },
+    {
+      "id": 33,
+      "name": "Dr. Kritika Shakya",
+      "specialty": "Neurology",
+      "experience": "10+ years of experience",
+      "location": "Biratnagar, Province No. 1",
+      "image": "/doc3.jpg",
+      "conditions": ["General Checkup"]
+    },
+    {
+      "id": 34,
+      "name": "Dr. Santosh Bhandari",
+      "specialty": "Orthopedics",
+      "experience": "20+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc4.jpg",
+      "conditions": ["Physical Therapy", "X-Ray & Imaging", "General Checkup"]
+    },
+    {
+      "id": 35,
+      "name": "Dr. Gita Rijal",
+      "specialty": "Oncology",
+      "experience": "14+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc5.jpg",
+      "conditions": ["General Checkup", "Blood Test"]
+    },
+    {
+      "id": 36,
+      "name": "Dr. Bikash Neupane",
+      "specialty": "Gastroenterology",
+      "experience": "9+ years of experience",
+      "location": "Butwal, Lumbini Province",
+      "image": "/doc1.jpg",
+      "conditions": ["General Checkup", "Blood Test"]
+    },
+    {
+      "id": 37,
+      "name": "Dr. Radhika Parajuli",
+      "specialty": "Psychiatry",
+      "experience": "15+ years of experience",
+      "location": "Kathmandu, Bagmati Province",
+      "image": "/doc2.jpg",
+      "conditions": ["Mental Health Counseling"]
+    },
+    {
+      "id": 38,
+      "name": "Dr. Dil Bahadur Tamang",
+      "specialty": "Ophthalmology",
+      "experience": "13+ years of experience",
+      "location": "Pokhara, Gandaki Province",
+      "image": "/doc3.jpg",
+      "conditions": ["Eye Examination", "General Checkup"]
+    },
+    {
+      "id": 39,
+      "name": "Dr. Sangita Bhattarai",
+      "specialty": "ENT (Ear, Nose & Throat)",
+      "experience": "8+ years of experience",
+      "location": "Lalitpur, Bagmati Province",
+      "image": "/doc4.jpg",
+      "conditions": ["General Checkup"]
+    },
+    {
+      "id": 40,
+      "name": "Dr. Uttam Khadka",
+      "specialty": "General Physician",
+      "experience": "12+ years of experience",
+      "location": "Kalagaun, Karnali Provincial",
+      "image": "/doc5.jpg",
+      "conditions": ["General Checkup", "Blood Test", "COVID-19 Testing", "Diabetes Consultation"]
+    }
+  ]
+}

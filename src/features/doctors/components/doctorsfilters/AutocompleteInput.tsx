@@ -8,6 +8,7 @@ interface AutocompleteInputProps {
   placeholder: string;
   options: string[];
   defaultValue?: string;
+  onValueChange?: (value: string) => void;
 }
 
 export const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
@@ -15,11 +16,16 @@ export const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
   placeholder,
   options,
   defaultValue = "",
+  onValueChange,
 }) => {
   const [value, setValue] = useState(defaultValue);
   const [isOpen, setIsOpen] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState(options);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -35,6 +41,9 @@ export const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setValue(inputValue);
+    if (onValueChange) {
+      onValueChange(inputValue);
+    }
     
     const filtered = options.filter((option) =>
       option.toLowerCase().includes(inputValue.toLowerCase())
@@ -45,6 +54,9 @@ export const AutocompleteInput: React.FC<AutocompleteInputProps> = ({
 
   const handleOptionClick = (option: string) => {
     setValue(option);
+    if (onValueChange) {
+      onValueChange(option);
+    }
     setIsOpen(false);
   };
 
