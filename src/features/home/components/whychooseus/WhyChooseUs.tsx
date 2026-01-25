@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import AnimatedContent from "./AnimatedContent";
 
 const WhyChooseUs: React.FC = () => {
   const stats = [
@@ -35,7 +36,7 @@ const WhyChooseUs: React.FC = () => {
             <div className="rounded-3xl overflow-hidden bg-gradient-to-br from-[#0A5470] to-[#01BAEF]">
               <div className="rounded-3xl overflow-hidden">
                 <Image
-                  src= "/doctors1.png"
+                  src="/doctors1.png"
                   alt="Team of medical professionals"
                   width={600}
                   height={500}
@@ -46,35 +47,7 @@ const WhyChooseUs: React.FC = () => {
             </div>
           </div>
 
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0B4F6C] mb-3">
-              Why choose us
-            </h2>
-            <p className="text-black text-sm mb-10 font-bold uppercase tracking-wide">
-              PROVIDED BY: Licensed medical experts
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index}>
-                  <div className="mb-3">
-                    <span className="text-5xl md:text-5xl font-semibold text-[#0B4F6C]">
-                      {stat.number}
-                    </span>
-                    <span className="text-4xl md:text-5xl font-bold text-[#01BAEF]">
-                      +
-                    </span>
-                  </div>
-                  <h3 className="text-black font-bold text-lg mb-2">
-                    {stat.label}
-                  </h3>
-                  <p className="text-gray-500 text-sm font-semibold leading-relaxed">
-                    {stat.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <AnimatedContent stats={stats} />
         </div>
       </div>
     </div>

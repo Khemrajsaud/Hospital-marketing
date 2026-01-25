@@ -1,6 +1,38 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: 0.4 },
+  },
+  hover: { scale: 1.03, transition: { duration: 0.3 } },
+  tap: { scale: 0.98 },
+};
 
 const BookingForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -30,15 +62,34 @@ const BookingForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
-      <h3 className="text-2xl font-bold text-[#0B4F6C] mb-2">Booking Form</h3>
-      <p className="text-gray-500 text-sm mb-6">
-        Fill in the details below to secure your slot.
-      </p>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+      className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100"
+    >
+      <motion.h3
+        variants={itemVariants}
+        className="text-2xl font-bold text-[#0B4F6C] mb-2"
+      >
+        Booking Form
+      </motion.h3>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
+      <motion.p
+        variants={itemVariants}
+        className="text-gray-500 text-sm mb-6"
+      >
+        Fill in the details below to secure your slot.
+      </motion.p>
+
+      <motion.form
+        onSubmit={handleSubmit}
+        variants={containerVariants}
+        className="space-y-5"
+      >
+        <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <motion.div variants={itemVariants}>
             <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
               Department
             </label>
@@ -55,9 +106,9 @@ const BookingForm: React.FC = () => {
               <option value="pediatrics">Pediatrics</option>
               <option value="ophthalmology">Ophthalmology</option>
             </select>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
               Select Doctor
             </label>
@@ -71,10 +122,10 @@ const BookingForm: React.FC = () => {
               <option value="">Select Doctor</option>
               <option value="dr-shrestha">Dr. Sakshyam Shrestha</option>
             </select>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div>
+        <motion.div variants={itemVariants}>
           <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
             Preferred Date
           </label>
@@ -87,9 +138,9 @@ const BookingForm: React.FC = () => {
             className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01BAEF] text-gray-700"
             required
           />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div variants={itemVariants}>
           <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
             Preferred time
           </label>
@@ -102,10 +153,10 @@ const BookingForm: React.FC = () => {
             className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01BAEF] text-gray-700"
             required
           />
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
+        <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <motion.div variants={itemVariants}>
             <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
               Full Name
             </label>
@@ -118,9 +169,9 @@ const BookingForm: React.FC = () => {
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01BAEF] text-gray-700"
               required
             />
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={itemVariants}>
             <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
               Phone Number
             </label>
@@ -133,10 +184,10 @@ const BookingForm: React.FC = () => {
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01BAEF] text-gray-700"
               required
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div>
+        <motion.div variants={itemVariants}>
           <label className="block text-[#0B4F6C] font-semibold mb-2 text-sm">
             Briefly Describe Symptoms
           </label>
@@ -149,16 +200,22 @@ const BookingForm: React.FC = () => {
             className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01BAEF] resize-none text-gray-700"
             required
           />
-        </div>
+        </motion.div>
 
-        <button
+        <motion.button
+          variants={buttonVariants}
+          whileHover="hover"
+          whileTap="tap"
           type="submit"
           className="w-full bg-[#01BAEF] hover:bg-[#0A5470] text-white font-bold py-4 rounded-xl text-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
         >
           Book Appointment →
-        </button>
+        </motion.button>
 
-        <div className="flex items-start gap-2">
+        <motion.div
+          variants={itemVariants}
+          className="flex items-start gap-2"
+        >
           <input
             type="checkbox"
             name="agreedToTerms"
@@ -178,9 +235,9 @@ const BookingForm: React.FC = () => {
             </a>
             .
           </label>
-        </div>
-      </form>
-    </div>
+        </motion.div>
+      </motion.form>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import SectionHeader from "@/src/components/shared/SectionHeader";
-import NewsCard from "./NewsCard";
+import AnimatedNewsCards from "./AnimatedNewsCards";
 
 const newsArticles = [
   {
@@ -52,11 +52,7 @@ const NewsSection: React.FC = () => {
           subtitleColor="text-[#0B4F6C]"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {newsArticles.map((article) => (
-            <NewsCard key={article.id} article={article} />
-          ))}
-        </div>
+        <AnimatedNewsCards articles={newsArticles} />
       </div>
     </div>
   );

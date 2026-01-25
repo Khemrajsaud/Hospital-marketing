@@ -1,4 +1,4 @@
-import FAQAccordion from './FAQAccordion';
+import FAQAccordionClient from './FAQAccordionClient';
 
 const faqs = [
   {
@@ -25,7 +25,7 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <div className="min-h-[50vh] bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[50vh] bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#0B4F6C] text-md font-semibold mb-2">
@@ -37,7 +37,7 @@ export default function FAQSection() {
           </h1>
         </div>
 
-        <FAQAccordion faqs={faqs} />
+        <FAQAccordionClient faqs={faqs} />
       </div>
     </div>
   );

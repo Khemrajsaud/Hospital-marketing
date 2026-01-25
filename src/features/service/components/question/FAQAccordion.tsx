@@ -1,54 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-type FAQ = {
-  question: string;
-  answer: string;
-};
+export default function FAQAccordion({ faqs }) {
+  const [openIndex, setOpenIndex] = useState(null);
 
-interface FAQAccordionProps {
-  faqs: FAQ[];
-}
-
-const FAQAccordion = ({ faqs }: FAQAccordionProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleAccordion = (index: number) => {
+  const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
     <div className="space-y-4">
       {faqs.map((faq, index) => (
-        <div
+        <motion.div
           key={index}
-          className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={itemVariants}
+          className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm"
         >
           <button
-            onClick={() => toggleAccordion(index)}
-            className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+            onClick={() => toggleFAQ(index)}
+            className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
           >
-            <span className="text-gray-900 font-medium text-base">
-              {faq.question}
-            </span>
-            <ChevronDown
-              className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
-                openIndex === index ? "transform rotate-180" : ""
-              }`}
-            />
+            <span className="font-semibold text-[#0B4F6C]">{faq.question}</span>
+            <motion.span
+              animate={{ rotate: openIndex === index ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChevronDown className="w-5 h-5 text-[#01BAEF]" />
+            </motion.span>
           </button>
 
-          {openIndex === index && (
-            <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
-              {faq.answer}
-            </div>
-          )}
-        </div>
+          <AnimatePresence>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="px-6 pb-5 text-gray-600">
+                  {faq.answer}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       ))}
     </div>
   );
-};
-
-export default FAQAccordion;
+}

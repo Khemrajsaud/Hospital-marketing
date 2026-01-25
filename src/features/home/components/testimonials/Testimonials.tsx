@@ -1,6 +1,6 @@
-import SectionHeader from "@/src/components/shared/SectionHeader";
 import React from "react";
-import TestimonialSlider from "./TestimonialSlider";
+import SectionHeader from "@/src/components/shared/SectionHeader";
+import AnimatedTestimonials from "./AnimatedTestimonials";
 
 const testimonials = [
   {
@@ -56,7 +56,7 @@ const Testimonials: React.FC = () => {
           subtitleColor="text-[#0B4F6C]"
         />
 
-        <TestimonialSlider testimonials={testimonials} />
+        <AnimatedTestimonials testimonials={testimonials} />
       </div>
     </div>
   );
