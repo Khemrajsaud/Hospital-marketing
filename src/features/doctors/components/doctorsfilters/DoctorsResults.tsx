@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import DoctorCard from "./DoctorCard";
-import doctorsData from "./doctors-data.json";
+import doctorsData from '@/src/components/doctorsData.json';
 
 interface DoctorsResultsProps {
   searchQuery: string;

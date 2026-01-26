@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { AutocompleteInput } from "./AutocompleteInput";
 import DoctorsResults from "./DoctorsResults";
-import doctorsData from "./doctors-data.json";
+import doctorsData from '@/src/components/doctorsData.json';
 
 const DoctorsSearchForm = () => {
   const [searchQuery, setSearchQuery] = useState("");

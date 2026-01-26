@@ -1,7 +1,7 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 type Feature = {
   id: number;
@@ -66,14 +66,15 @@ export default function DoctorFeaturesSectionClient({ features }: Props) {
                 className="object-contain"
               />
             </div>
-
             <h3 className="text-lg font-semibold text-gray-900 text-center mb-6 min-h-[3rem] flex items-center">
               {feature.title}
             </h3>
 
-            <button className="w-full px-6 py-3 bg-white text-[#0B4F6C] border-2 border-[#0B4F6C] rounded-lg font-semibold hover:bg-[#0B4F6C] hover:text-white transition-all duration-300">
-              {feature.buttonText}
-            </button>
+            <Link href="/doctorappointment" className="w-full">
+              <button className="w-full px-6 py-3 bg-white text-[#0B4F6C] border-2 border-[#0B4F6C] rounded-lg font-semibold hover:bg-[#0B4F6C] hover:text-white transition-all duration-300">
+                {feature.buttonText}
+              </button>
+            </Link>
           </div>
         </motion.div>
       ))}
