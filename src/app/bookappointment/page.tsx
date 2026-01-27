@@ -1,10 +1,10 @@
-import Signup from '@/src/features/auth/components/Signup'
+import BookingSection from '@/src/features/home/components/booking/BookingSection'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <Signup/>
+      <BookingSection/>
     </div>
   )
 }

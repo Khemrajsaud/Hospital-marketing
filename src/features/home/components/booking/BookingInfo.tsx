@@ -63,7 +63,7 @@ const BookingInfo: React.FC = () => {
     >
       <motion.p
         variants={titleVariants}
-        className="text-[#0B4F6C] font-semibold text-lg mb-3"
+        className="text-[#0B4F6C] font-semibold text-base mb-3"
       >
         Book Appointment
       </motion.p>
@@ -78,7 +78,7 @@ const BookingInfo: React.FC = () => {
 
       <motion.p
         variants={textVariants}
-        className="text-gray-600 text-lg mb-8 leading-relaxed"
+        className="text-gray-600 text-base mb-8 leading-relaxed"
       >
         Experience hassle-free healthcare scheduling with our advanced
         management system. Fast, secure, and reliable.
@@ -90,11 +90,11 @@ const BookingInfo: React.FC = () => {
             key={index}
             variants={featureVariants}
             whileHover={{ 
-              scale: 1.03, 
-              boxShadow: "0 10px 30px -8px #01BAEF",
+              scale: 1.02, 
+              boxShadow: "0 8px 24px -4px rgba(1, 186, 239, 0.2)",
               transition: { duration: 0.3 }
             }}
-            className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-md"
+            className="bg-white rounded-xl p-6 flex items-start gap-4 shadow-sm border border-gray-100"
           >
             <div className="w-12 h-12 rounded-full bg-[#01BAEF]/10 flex items-center justify-center flex-shrink-0">
               <feature.icon
@@ -103,7 +103,7 @@ const BookingInfo: React.FC = () => {
               />
             </div>
             <div>
-              <h3 className="text-[#0B4F6C] font-semibold text-lg mb-1">
+              <h3 className="text-[#0B4F6C] font-semibold text-base mb-1">
                 {feature.title}
               </h3>
               <p className="text-gray-600 text-sm">{feature.description}</p>
