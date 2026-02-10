@@ -1,9 +1,10 @@
+import BookingSection from '@/src/features/home/components/booking/BookingSection'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-     Login / Signup
+      <BookingSection/>
     </div>
   )
 }

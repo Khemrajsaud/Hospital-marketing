@@ -1,32 +1,16 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 
 const AuthButtons = () => {
-  const handleLogin = () => {
-    // Login logic here
-    console.log('Login clicked');
-  };
-
-  const handleSignup = () => {
-    // Signup logic here
-    console.log('Signup clicked');
-  };
-
   return (
-    <div className="flex items-center space-x-4">
-      <button
-        onClick={handleLogin}
-        className="text-[#0A5470] hover:text-[#096686] font-semibold transition-colors"
+    <div>
+      <a
+        href="/bookappointment"
+        className="bg-[#0A5470] py-3 p-8 rounded-xl text-white font-semibold text-md"
       >
-        Login
-      </button>
-      <button
-        onClick={handleSignup}
-        className="bg-[#0A5470] hover:bg-[#096686] text-white font-semibold px-6 py-2 rounded-lg transition-colors"
-      >
-        Sign Up
-      </button>
+        Book Appointment
+      </a>
     </div>
   );
 };

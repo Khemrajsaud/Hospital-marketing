@@ -1,5 +1,5 @@
 import React from "react";
-import AboutUsButtons from "@/src/components/AboutUsButtons";
+import AnimatedAboutContent from "./AnimatedAboutContent";
 
 const AboutUsSection: React.FC = () => {
   return (
@@ -11,18 +11,7 @@ const AboutUsSection: React.FC = () => {
       <div className="absolute top-1/2 left-12 w-2 h-2 bg-[#01BAEF]/30 rounded-full"></div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="text-[#0B4F6C]">About </span>
-          <span className="text-[#01BAEF]">Us</span>
-        </h2>
-
-        <p className="text-[#0B4F6C] text-lg md:text-xl mb-10 leading-relaxed font-medium max-w-3xl mx-auto">
-          We're revolutionizing healthcare by making quality medical care accessible,
-          affordable, and available to everyone, anywhere, anytime.
-        </p>
-
-        <AboutUsButtons />
+        <AnimatedAboutContent />
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 import SpecialistCard from "./SpecialistCard";
 import ExcellenceBanner from "./ExcellenceBanner";
 import SectionHeader from "@/src/components/shared/SectionHeader";
@@ -54,9 +57,39 @@ const specialists = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Specialists: React.FC = () => {
   return (
-    <div className="bg-[#F8FAFC] py-16 md:py-20 px-6 md:px-12 lg:px-24">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={containerVariants}
+      className="bg-[#F8FAFC] py-16 md:py-20 px-6 md:px-12 lg:px-24"
+    >
       <div className="max-w-8xl mx-auto">
         <SectionHeader
           subtitle="Expert Medical Care"
@@ -65,22 +98,35 @@ const Specialists: React.FC = () => {
           description="Connect with experienced, board-certified doctors across major specialties — personalized care you can trust."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <motion.div
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6"
+        >
           {specialists.slice(0, 4).map((specialist) => (
-            <SpecialistCard key={specialist.id} specialist={specialist} />
+            <motion.div key={specialist.id} variants={cardVariants}>
+              <SpecialistCard specialist={specialist} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {specialists.slice(4).map((specialist) => (
-            <SpecialistCard key={specialist.id} specialist={specialist} />
+            <motion.div key={specialist.id} variants={cardVariants}>
+              <SpecialistCard specialist={specialist} />
+            </motion.div>
           ))}
-          <div className="lg:col-span-2">
+          <motion.div
+            variants={cardVariants}
+            className="lg:col-span-2"
+          >
             <ExcellenceBanner />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

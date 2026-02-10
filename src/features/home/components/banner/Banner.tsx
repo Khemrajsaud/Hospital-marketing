@@ -25,11 +25,14 @@ export const slides: Slide[] = [
 
 const Banner = () => {
   return (
-    <section className="relative w-full h-[600px] min-h-[500px] overflow-hidden" style={{ fontFamily: 'var(--font-quicksand), system-ui, sans-serif' }}>
+    <section
+      className="relative w-full h-[600px] min-h-[500px] overflow-hidden"
+      style={{ fontFamily: 'var(--font-quicksand), system-ui, sans-serif' }}
+    >
       <BannerSlider slides={slides} />
-      
+
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent" />
-      
+
       <BannerContent slides={slides} />
     </section>
   );
