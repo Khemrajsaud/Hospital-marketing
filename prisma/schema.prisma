@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+//  User Authentication & Authorization
+model User {
+  id          Int      @id @default(autoincrement())
+  name        String   @default("Admin User")
+  email       String   @unique
+  password    String
+  role        Role     @default(ADMIN)
+  resetToken  String?
+  resetExpiry DateTime?
+  createdAt   DateTime @default(now())
+}
+
+enum Role {
+  SUPERADMIN
+  ADMIN
+}
+
+// 2. Doctor Management
+model Doctor {
+  id            Int            @id @default(autoincrement())
+  name          String         
+  image         String?        
+  experience    String         
+  location      String         
+  
+  specialtyId   Int
+  specialty     Specialty      @relation(fields: [specialtyId], references: [id])
+  
+  schedules     Schedule[]
+  appointments  Appointment[]
+  services      DoctorService[] 
+  createdAt     DateTime       @default(now())
+}
+
+
+model Specialty {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique 
+  doctors      Doctor[]
+  appointments Appointment[]
+}
+
+model Schedule {
+  id        Int      @id @default(autoincrement())
+  dayOfWeek String   
+  startTime String   
+  endTime   String   
+  doctorId  Int
+  doctor    Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+}
+
+model DoctorService {
+  id       Int    @id @default(autoincrement())
+  name     String 
+  doctorId Int
+  doctor   Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+}
+
+// 3. Appointment System
+model Appointment {
+  id           Int               @id @default(autoincrement())
+  patientName  String
+  patientEmail String            
+  phoneNumber  String            
+  date         DateTime
+  time         String            
+  symptoms     String            @db.Text 
+  
+  status       AppointmentStatus @default(PENDING)
+  
+  specialtyId  Int
+  specialty    Specialty         @relation(fields: [specialtyId], references: [id])
+  
+  doctorId     Int
+  doctor       Doctor            @relation(fields: [doctorId], references: [id])
+  
+  createdAt    DateTime          @default(now())
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+
+
+
+
+// 4. Services Management
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+}
+
+// 5. Contact & Feedback
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  address   String?  
+  phone     String?  
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+}
