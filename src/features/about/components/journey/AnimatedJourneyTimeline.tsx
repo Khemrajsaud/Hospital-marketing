@@ -34,7 +34,7 @@ const titleVariants = {
     y: 0,
     transition: {
       duration: 0.9,
-      ease: "easeOut",
+      ease: "easeOut" as const,
     },
   },
 };

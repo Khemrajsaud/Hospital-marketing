@@ -21,7 +21,7 @@ const titleVariants = {
     y: 0,
     transition: {
       duration: 0.9,
-      ease: "easeOut",
+      ease: "easeOut" as const,
     },
   },
 };
@@ -33,7 +33,7 @@ const subtitleVariants = {
     y: 0,
     transition: {
       duration: 0.9,
-      ease: "easeOut",
+      ease: "easeOut" as const,
       delay: 0.2,
     },
   },
@@ -47,7 +47,7 @@ const mainTitleVariants = {
     scale: 1,
     transition: {
       duration: 1.1,
-      ease: "easeOut",
+      ease: "easeOut" as const,
       delay: 0.4,
     },
   },
