@@ -1,26 +1,55 @@
-const rateLimitMap = new Map();
 
-export function rateLimiter(ip: string) {
-  const now = Date.now();
-  const windowTime = 60 * 1000; // 1 min
-  const maxRequests = 10;
+type RateLimitData = {
+  count: number;
+  startTime: number;
+};
 
-  if (!rateLimitMap.has(ip)) {
-    rateLimitMap.set(ip, { count: 1, time: now });
-    return true;
-  }
 
-  const data = rateLimitMap.get(ip);
+type RateLimitOptions = {
+  windowMs: number;
+  maxRequests: number;
+};
 
-  if (now - data.time < windowTime) {
-    data.count++;
+export function createRateLimiter(options: RateLimitOptions) {
+  const store: Map<string, RateLimitData> = new Map();
 
-    if (data.count > maxRequests) {
-      return false; // blocked
+  return function rateLimiter(ip: string): boolean {
+    const currentTime = Date.now();
+
+    const existingData = store.get(ip);
+
+
+    if (!existingData) {
+      store.set(ip, {
+        count: 1,
+        startTime: currentTime,
+      });
+      return true;
     }
-  } else {
-    rateLimitMap.set(ip, { count: 1, time: now });
-  }
 
-  return true;
+    const { count, startTime } = existingData;
+
+   
+    if (currentTime - startTime < options.windowMs) {
+      if (count + 1 > options.maxRequests) {
+        return false; 
+      }
+
+    
+      store.set(ip, {
+        count: count + 1,
+        startTime,
+      });
+
+      return true;
+    }
+
+  
+    store.set(ip, {
+      count: 1,
+      startTime: currentTime,
+    });
+
+    return true;
+  };
 }
