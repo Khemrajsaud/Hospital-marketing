@@ -93,10 +93,6 @@ enum AppointmentStatus {
   CANCELLED
 }
 
-
-
-
-
 // 4. Services Management
 model Service {
   id          Int      @id @default(autoincrement())
