@@ -1,11 +1,25 @@
 import { prisma } from "@/src/lib/prisma";
-
-import { generateResetToken } from "@/src//lib/auth";
-import { sendResetPasswordEmail } from "@/src//lib/mail";
+import { generateResetToken } from "@/src/lib/auth";
+import { sendResetPasswordEmail } from "@/src/lib/mail";
 import { NextRequest, NextResponse } from "next/server";
+import { forgotPasswordLimiter } from "@/src/lib/rateLimiter";
 
 export async function POST(req: NextRequest) {
   try {
+
+    // Apply rate limiting
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+
+    const isAllowed = forgotPasswordLimiter(ip);
+
+    if (!isAllowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const rawEmail = typeof body?.email === "string" ? body.email : "";
     const email = rawEmail.trim().toLowerCase();
@@ -25,11 +39,12 @@ export async function POST(req: NextRequest) {
     });
 
     if (!user) {
-      // Return success regardless to prevent email enumeration
+      // Prevent email enumeration
       return NextResponse.json(
         {
           success: true,
-          message: "If an account exists with this email, a reset link will be sent",
+          message:
+            "If an account exists with this email, a reset link will be sent",
         },
         { status: 200 }
       );
@@ -38,7 +53,7 @@ export async function POST(req: NextRequest) {
     // Generate reset token
     const { token, expiry } = generateResetToken();
 
-    // Update user with reset token
+    // Save token in DB
     await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -47,18 +62,18 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Send reset email
+    // Send email
     try {
       await sendResetPasswordEmail(user.email, user.name, token);
     } catch (emailError) {
       console.error("Error sending reset email:", emailError);
-      // Still return success to user
     }
 
     return NextResponse.json(
       {
         success: true,
-        message: "If an account exists with this email, a reset link will be sent",
+        message:
+          "If an account exists with this email, a reset link will be sent",
       },
       { status: 200 }
     );

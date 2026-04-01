@@ -19,3 +19,13 @@ export const adminLimiter = createRateLimiter({
   windowMs: 60 * 1000,
   maxRequests: 20,
 });
+
+export const forgotPasswordLimiter = createRateLimiter({
+  windowMs: 60 * 1000,
+  maxRequests: 5,
+});
+
+export const resetPasswordLimiter = createRateLimiter({
+  windowMs: 60 * 1000,
+  maxRequests: 5,
+});
