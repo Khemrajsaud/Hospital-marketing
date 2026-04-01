@@ -1,5 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
 import { NextResponse } from "next/server";
+import { adminLimiter } from "@/src/lib/rateLimiter";
 
 type RouteContext = {
   params: Promise<{ id: string }>;
@@ -10,19 +11,39 @@ type AllowedStatus = (typeof allowedStatuses)[number];
 
 export async function PATCH(req: Request, { params }: RouteContext) {
   try {
-    const { id: idParam } = await params;
-    const id = Number(idParam);
-    if (!Number.isInteger(id) || id <= 0) {
-      return NextResponse.json({ error: "Invalid appointment id" }, { status: 400 });
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+
+    // Rate limit 
+    if (!adminLimiter(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests, please try again later" },
+        { status: 429 }
+      );
     }
 
-    const { status } = await req.json(); // e.g., "CONFIRMED" or "CANCELLED"
+    const { id: idParam } = await params;
+    const id = Number(idParam);
+
+    if (!Number.isInteger(id) || id <= 0) {
+      return NextResponse.json(
+        { error: "Invalid appointment id" },
+        { status: 400 }
+      );
+    }
+
+    const { status } = await req.json();
+
     const normalizedStatus =
-      typeof status === "string" ? (status.trim().toUpperCase() as AllowedStatus) : undefined;
+      typeof status === "string"
+        ? (status.trim().toUpperCase() as AllowedStatus)
+        : undefined;
 
     if (!normalizedStatus || !allowedStatuses.includes(normalizedStatus)) {
       return NextResponse.json(
-        { error: `Invalid status. Use one of: ${allowedStatuses.join(", ")}` },
+        {
+          error: `Invalid status. Use one of: ${allowedStatuses.join(", ")}`,
+        },
         { status: 400 }
       );
     }
@@ -34,11 +55,18 @@ export async function PATCH(req: Request, { params }: RouteContext) {
 
     return NextResponse.json(updated);
   } catch (error) {
-    if (error instanceof Error && error.message.includes("Record to update not found")) {
-      return NextResponse.json({ error: "Appointment not found" }, { status: 404 });
+    if (
+      error instanceof Error &&
+      error.message.includes("Record to update not found")
+    ) {
+      return NextResponse.json(
+        { error: "Appointment not found" },
+        { status: 404 }
+      );
     }
 
     const message = error instanceof Error ? error.message : "Update failed";
+
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
