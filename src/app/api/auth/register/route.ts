@@ -1,38 +1,43 @@
-import { prisma } from "@/src//lib/prisma";
+
+import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import { checkAuthAndRole } from "@/src/app/middleware/authMiddleware";
+import { registerLimiter } from "@/src/lib/rateLimiter";
+import { registerSchema } from "@/src/schemas/userSchema";
 
 export async function POST(req: NextRequest) {
   try {
+
+    // Get client IP for rate limiting
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+
+    
+    if (!registerLimiter(ip)) {
+      return NextResponse.json(
+        { error: "Too many registration attempts, please try later" },
+        { status: 429 }
+      );
+    }
+
+    //  Parse request body
     const body = await req.json();
-    const name = typeof body?.name === "string" ? body.name.trim() : "";
-    const rawEmail = typeof body?.email === "string" ? body.email : "";
+
+    //  Input validation
+    const parsed = registerSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Invalid input", details: parsed.error.flatten() },
+        { status: 400 }
+      );
+    }
+
+    const { name, email: rawEmail, password, role } = parsed.data;
     const email = rawEmail.trim().toLowerCase();
-    const password = typeof body?.password === "string" ? body.password : "";
-    const role = body?.role;
 
-    // Validate input
-    if (!name || !email || !password) {
-      return NextResponse.json(
-        { error: "Name, email, and password are required" },
-        { status: 400 }
-      );
-    }
-
-    // Password validation
-    if (password.length < 8) {
-      return NextResponse.json(
-        { error: "Password must be at least 8 characters" },
-        { status: 400 }
-      );
-    }
-
-    // Check if user already exists
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
-
+    //  Check if user already exists
+    const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
       return NextResponse.json(
         { error: "User with this email already exists" },
@@ -40,7 +45,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Only SUPERADMIN can create admin users
+    //  Only SUPERADMIN can create admin users
     if (role === "ADMIN" || role === "SUPERADMIN") {
       const { authenticated, authorized, response } = await checkAuthAndRole(
         req,
@@ -58,10 +63,10 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Hash password
+    //  Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create user (default to no role unless SUPERADMIN)
+    // Create user in DB
     const newUser = await prisma.user.create({
       data: {
         name,
