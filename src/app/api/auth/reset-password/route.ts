@@ -1,9 +1,23 @@
 import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
+import { resetPasswordLimiter } from "@/src/lib/rateLimiter";
 
 export async function POST(req: NextRequest) {
   try {
+    // Apply rate limiting
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+
+    const isAllowed = resetPasswordLimiter(ip);
+
+    if (!isAllowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const { token, newPassword } = body;
 
@@ -28,7 +42,7 @@ export async function POST(req: NextRequest) {
       where: {
         resetToken: token,
         resetExpiry: {
-          gt: new Date(), // Token must not be expired
+          gt: new Date(),
         },
       },
       select: { id: true, email: true },
@@ -69,4 +83,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
