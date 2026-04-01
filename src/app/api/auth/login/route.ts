@@ -2,9 +2,20 @@ import { prisma } from "@/src/lib/prisma";
 import { createToken } from "@/src/lib/auth";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
+import { loginLimiter } from "@/src/lib/rateLimiter";
 
 export async function POST(req: NextRequest) {
   try {
+    // Apply rate limiting
+    const limiterResponse = await loginLimiter.check(req);
+    if (limiterResponse) {
+     
+      return NextResponse.json(
+        { error: "Too many login attempts. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const rawEmail = typeof body?.email === "string" ? body.email : "";
     const email = rawEmail.trim().toLowerCase();
@@ -18,7 +29,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Find user by email
+    // Find user
     const user = await prisma.user.findUnique({
       where: { email },
       select: {
@@ -39,7 +50,6 @@ export async function POST(req: NextRequest) {
 
     // Compare password
     const isPasswordValid = await bcrypt.compare(password, user.password);
-
     if (!isPasswordValid) {
       return NextResponse.json(
         { error: "Invalid email or password" },
